@@ -1,7 +1,11 @@
 import './App.css';
+import AppBar from './components/Appbar/Appbar';
+import Container from './components/Container/Container';
 
-function App() {
-  return <div className="App">TEST</div>;
+export default function App() {
+  return (
+    <Container>
+      <AppBar />
+    </Container>
+  );
 }
-
-export default App;
