@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { PreviewStyle } from './Preview.styled';
 
 const MoviePreview = ({ movie }) => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const MoviePreview = ({ movie }) => {
 
   const { title, poster_path, overview, genres, vote_average } = movie;
   return (
-    <div>
+    <PreviewStyle>
       <div>
         <button type="button" onClick={onGoBack}>
           Back
@@ -42,7 +43,7 @@ const MoviePreview = ({ movie }) => {
           )}
         </div>
       </div>
-    </div>
+    </PreviewStyle>
   );
 };
 

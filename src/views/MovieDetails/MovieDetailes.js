@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation, Outlet, NavLink } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import * as apiService from '../../services/api';
 import MoviePreview from '../../components/Preview/Preview';
 import Loader from '../../components/Loader/Loader';
+import { MovieStyle } from './MovieDetailes.styled';
+import { NavLinkStyle } from '../../components/Navigation/Navigation.styled';
 
 const MovieDetailsPage = () => {
   const location = useLocation();
@@ -25,7 +25,7 @@ const MovieDetailsPage = () => {
       .fetchMovieById(movieId)
       .then(movie => setMovie(movie))
       .catch(error => {
-        toast('Something went wrong :(');
+        alert('Something is going wrong');
         setError(error);
       })
       .finally(() => {
@@ -38,16 +38,16 @@ const MovieDetailsPage = () => {
       {loader && <Loader />}
       {movie && <MoviePreview movie={movie} />}
 
-      <p>Additional information</p>
+      <MovieStyle>Additional information</MovieStyle>
       <div>
         {movie && (
           <nav>
-            <NavLink to={`/movies/${movie.id}/cast`} state={{ from: location.state.from }}>
+            <NavLinkStyle to={`/movies/${movie.id}/cast`} state={{ from: location.state.from }}>
               Cast
-            </NavLink>
-            <NavLink to={`/movies/${movie.id}/reviews`} state={{ from: location.state.from }}>
+            </NavLinkStyle>
+            <NavLinkStyle to={`/movies/${movie.id}/reviews`} state={{ from: location.state.from }}>
               Reviews
-            </NavLink>
+            </NavLinkStyle>
             <Outlet />
           </nav>
         )}

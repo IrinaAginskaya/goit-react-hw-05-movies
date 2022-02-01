@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import * as apiService from '../../services/api';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import MoviesList from '../../components/List/MovieList';
-// import Loader from "../../components/Loader/Loader";
 
 const MoviesPage = () => {
   const location = useLocation();
@@ -44,7 +41,7 @@ const MoviesPage = () => {
       )
 
       .catch(error => {
-        toast('Trouble. Something is wrong :(');
+        alert('Something is going wrong');
         setError(error);
       })
 

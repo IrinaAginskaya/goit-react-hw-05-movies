@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import * as apiServices from '../../services/api';
 import MoviesList from '../../components/List/MovieList';
 import Loader from '../../components/Loader/Loader';
+import { TitleStyle } from './HomePage.styled';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -21,7 +20,7 @@ const HomePage = () => {
       .fetchPopularMovie()
       .then(({ results }) => setMovies(results))
       .catch(error => {
-        toast('Trouble. Something is wrong :(');
+        alert('Something is going wrong');
         setError(error);
       })
 
@@ -33,7 +32,7 @@ const HomePage = () => {
       {loader && <Loader />}
       {movies && (
         <>
-          <h1>Trending today</h1>
+          <TitleStyle>Trending today</TitleStyle>
           <MoviesList movies={movies} />
         </>
       )}

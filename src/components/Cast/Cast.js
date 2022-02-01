@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
+import { CastStyle } from './Cast.styled';
 
 import * as apiService from '../../services/api';
 
@@ -37,7 +38,7 @@ const Cast = () => {
       {loader && <Loader />}
       {cast && (
         <div>
-          <ul>
+          <CastStyle>
             {cast.map(({ id, profile_path, name, character }) => (
               <li key={id}>
                 {profile_path ? (
@@ -49,7 +50,7 @@ const Cast = () => {
                 <span>Character: {character}</span>
               </li>
             ))}
-          </ul>
+          </CastStyle>
         </div>
       )}
     </>
